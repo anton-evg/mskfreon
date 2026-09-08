@@ -1,0 +1,4 @@
+interface:
+  display_name: "JTBD Стратегия страницы"
+  short_description: "Структура и тексты страниц по JTBD"
+  default_prompt: "Используй $jtbd-analysis-page для подготовки текстовой стратегии страницы по брифу."
