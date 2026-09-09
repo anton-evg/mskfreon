@@ -10,6 +10,49 @@ const initialFormState = {
   comment: "",
 };
 
+const phonePattern = "\\+7 \\(\\d{3}\\) \\d{3}-\\d{2}-\\d{2}";
+
+function formatRussianPhone(value) {
+  const digits = value.replace(/\D/g, "");
+
+  if (digits === "") {
+    return "";
+  }
+
+  let normalizedDigits = digits;
+
+  if (normalizedDigits.startsWith("8")) {
+    normalizedDigits = `7${normalizedDigits.slice(1)}`;
+  } else if (!normalizedDigits.startsWith("7")) {
+    normalizedDigits = `7${normalizedDigits}`;
+  }
+
+  const phoneDigits = normalizedDigits.slice(1, 11);
+  let formattedPhone = "+7";
+
+  if (phoneDigits.length > 0) {
+    formattedPhone += ` (${phoneDigits.slice(0, 3)}`;
+  }
+
+  if (phoneDigits.length >= 3) {
+    formattedPhone += ")";
+  }
+
+  if (phoneDigits.length > 3) {
+    formattedPhone += ` ${phoneDigits.slice(3, 6)}`;
+  }
+
+  if (phoneDigits.length > 6) {
+    formattedPhone += `-${phoneDigits.slice(6, 8)}`;
+  }
+
+  if (phoneDigits.length > 8) {
+    formattedPhone += `-${phoneDigits.slice(8, 10)}`;
+  }
+
+  return formattedPhone;
+}
+
 export function OrderForm({ initialRefrigerant = "", compact = false }) {
   const formId = useId();
   const [formState, setFormState] = useState({ ...initialFormState, refrigerant: initialRefrigerant });
@@ -97,9 +140,13 @@ export function OrderForm({ initialRefrigerant = "", compact = false }) {
             name="phone"
             type="tel"
             autoComplete="tel"
-            placeholder="+7 999 000-00-00"
+            inputMode="tel"
+            placeholder="+7 (999) 000-00-00"
+            pattern={phonePattern}
+            title="Введите телефон в формате +7 (999) 000-00-00"
+            maxLength={18}
             value={formState.phone}
-            onChange={(event) => updateField("phone", event.target.value)}
+            onChange={(event) => updateField("phone", formatRussianPhone(event.target.value))}
             required
           />
         </label>
