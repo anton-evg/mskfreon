@@ -11,6 +11,26 @@ const initialFormState = {
 };
 
 const phonePattern = "\\+7 \\(\\d{3}\\) \\d{3}-\\d{2}-\\d{2}";
+const allowedPhoneControlKeys = new Set([
+  "Backspace",
+  "Delete",
+  "ArrowLeft",
+  "ArrowRight",
+  "Home",
+  "End",
+  "Tab",
+]);
+
+function handlePhoneKeyDown(event) {
+  const isKeyboardShortcut = event.ctrlKey || event.metaKey;
+  const isDigit = /^\d$/.test(event.key);
+
+  if (isKeyboardShortcut || isDigit || allowedPhoneControlKeys.has(event.key)) {
+    return;
+  }
+
+  event.preventDefault();
+}
 
 function formatRussianPhone(value) {
   const digits = value.replace(/\D/g, "");
@@ -146,6 +166,7 @@ export function OrderForm({ initialRefrigerant = "", compact = false }) {
             title="Введите телефон в формате +7 (999) 000-00-00"
             maxLength={18}
             value={formState.phone}
+            onKeyDown={handlePhoneKeyDown}
             onChange={(event) => updateField("phone", formatRussianPhone(event.target.value))}
             required
           />
