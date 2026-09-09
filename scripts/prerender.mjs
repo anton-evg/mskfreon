@@ -9,6 +9,7 @@ const template = await readFile(resolve(distributionDirectory, "index.html"), "u
 const { getSeoData, indexableRoutes, render } = await import(pathToFileURL(serverEntryPath));
 const routes = [...indexableRoutes, "/404"];
 const pageTemplate = template
+  .replace(/\s*<link\s+rel="(?:icon|apple-touch-icon)"[^>]*>/gi, "")
   .replace(/\s*<meta\s+name="robots"[^>]*>/gi, "")
   .replace(/\s*<link\s+rel="canonical"[^>]*>/gi, "")
   .replace(/\s*<meta\s+property="og:[^"]+"[^>]*>/gi, "")
@@ -25,6 +26,9 @@ function escapeHtml(value) {
 function createHeadTags(seo) {
   const robots = seo.noindex ? "noindex,follow" : "index,follow";
   return [
+    '<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">',
+    '<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">',
+    '<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">',
     `<meta name="robots" content="${robots}">`,
     `<link rel="canonical" href="${seo.canonical}">`,
     '<meta property="og:locale" content="ru_RU">',
