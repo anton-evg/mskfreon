@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
 import {
@@ -27,6 +27,40 @@ import { Freon600Page } from "./components/Freon600Page";
 import { Freon290Page } from "./components/Freon290Page";
 import { DeliveryPage } from "./components/DeliveryPage";
 import { PaymentPage } from "./components/PaymentPage";
+import { AboutPage } from "./components/AboutPage";
+import { ContactsPage } from "./components/ContactsPage";
+import { ArticlesPage } from "./components/ArticlesPage";
+import { ArticlePage } from "./components/ArticlePage";
+import { LegalPage } from "./components/LegalPage";
+import { NotFoundPage } from "./components/NotFoundPage";
+import { SeoMeta } from "./components/SeoMeta";
+
+const legacyRedirects = {
+  "/kompaniya-ooo-mskfreon-krupneyshiy-postavshchik-freona-moskvy-i-rf-my-garantiruem-luchshie-ceny": "/",
+  "/o-kompanii": "/about",
+  "/dostavka-freona-po-moskve-i-v-regiony": "/delivery",
+  "/tovar/freon-134": "/products/freon-134",
+  "/tovar/freon-404": "/products/freon-404",
+  "/tovar/freon-407": "/products/freon-407",
+  "/tovar/freon-410": "/products/freon-410",
+  "/tovar/freon-22": "/products/freon-22",
+  "/tovar/freon-r507": "/products/freon-507",
+  "/tovar/freon-r600": "/products/freon-600",
+  "/tovar/freon-r12": "/articles/freon-r12",
+  "/doc/freon-404a-primenenie-freonov-hladonov-vidy-freonov": "/articles/freon-404a-primenenie",
+  "/doc/freony": "/articles/freony",
+  "/pochemu-freon-nuzhno-kupit-u-nas-kachestvo-garantii": "/about#quality-guarantee",
+  "/blog": "/articles",
+  "/personal-data": "/personal-data-consent",
+};
+
+function LegacyRedirect({ target }) {
+  useEffect(() => {
+    window.location.replace(`${target}${window.location.search}`);
+  }, [target]);
+
+  return null;
+}
 
 const initialDialogState = {
   isOpen: false,
@@ -34,7 +68,7 @@ const initialDialogState = {
   refrigerant: "",
 };
 
-export function App() {
+export function App({ initialPathname }) {
   const [dialogState, setDialogState] = useState(initialDialogState);
 
   const openRequestDialog = ({ title, refrigerant = "" }) => {
@@ -45,12 +79,31 @@ export function App() {
     setDialogState((currentState) => ({ ...currentState, isOpen: false }));
   };
 
-  const pathname = window.location.pathname.replace(/\/$/, "") || "/";
+  const browserPathname = typeof window === "undefined" ? "/" : window.location.pathname;
+  const pathname = (initialPathname || browserPathname).replace(/\/$/, "") || "/";
 
   return (
     <>
       <Header onCallback={() => openRequestDialog({ title: "Заказать обратный звонок" })} />
-      {pathname === "/payment" ? (
+      {legacyRedirects[pathname] ? (
+        <LegacyRedirect target={legacyRedirects[pathname]} />
+      ) : pathname === "/contacts" ? (
+        <ContactsPage onRequest={openRequestDialog} />
+      ) : pathname === "/articles/freon-404a-primenenie" ? (
+        <ArticlePage articleKey="freon-404a-primenenie" />
+      ) : pathname === "/articles/freon-r12" ? (
+        <ArticlePage articleKey="freon-r12" />
+      ) : pathname === "/articles/freony" ? (
+        <ArticlePage articleKey="freony" />
+      ) : pathname === "/articles" ? (
+        <ArticlesPage />
+      ) : pathname === "/privacy-policy" ? (
+        <LegalPage type="privacy" />
+      ) : pathname === "/personal-data-consent" ? (
+        <LegalPage type="consent" />
+      ) : pathname === "/about" ? (
+        <AboutPage onRequest={openRequestDialog} />
+      ) : pathname === "/payment" ? (
         <PaymentPage onRequest={openRequestDialog} />
       ) : pathname === "/delivery" ? (
         <DeliveryPage onRequest={openRequestDialog} />
@@ -74,7 +127,7 @@ export function App() {
         <Freon404Page onRequest={openRequestDialog} />
       ) : pathname === "/products" ? (
         <CatalogPage onRequest={openRequestDialog} />
-      ) : (
+      ) : pathname === "/" ? (
         <main id="top">
           <Hero
             onRequest={() => openRequestDialog({ title: "Получить цену и оформить заказ" })}
@@ -95,10 +148,13 @@ export function App() {
             onCallback={() => openRequestDialog({ title: "Заказать обратный звонок" })}
           />
         </main>
+      ) : (
+        <NotFoundPage />
       )}
       <Footer />
       <RequestDialog dialogState={dialogState} onClose={closeRequestDialog} />
       <CookieNotice />
+      <SeoMeta pathname={pathname} />
     </>
   );
 }

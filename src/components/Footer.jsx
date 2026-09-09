@@ -6,7 +6,7 @@ const footerLinks = [
   ["Оплата", "/payment"],
   ["О компании", "/about"],
   ["Контакты", "/contacts"],
-  ["Блог", "/blog"],
+  ["Блог", "/articles"],
 ];
 
 export function Footer() {
@@ -44,7 +44,7 @@ export function Footer() {
         <span>© {new Date().getFullYear()} ООО «РусХимСоюз»</span>
         <div>
           <a href="/privacy-policy">Политика конфиденциальности</a>
-          <a href="/personal-data">Согласие на обработку персональных данных</a>
+          <a href="/personal-data-consent">Согласие на обработку персональных данных</a>
         </div>
       </div>
     </footer>

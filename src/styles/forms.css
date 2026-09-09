@@ -91,6 +91,14 @@
   grid-column: 1 / -1;
 }
 
+.field--honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 .field__label {
   font-size: 13px;
   font-weight: 700;
@@ -152,6 +160,32 @@
 .order-form__submit {
   width: 100%;
   margin-top: 20px;
+}
+
+.order-form__error {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 18px;
+  border: 1px solid #d9a3a3;
+  border-radius: 5px;
+  padding: 13px;
+  color: #7f2525;
+  background: #fff4f4;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.order-form__error svg {
+  width: 19px;
+  height: 19px;
+  flex: 0 0 auto;
+}
+
+.order-form__error a {
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 .order-form__message {

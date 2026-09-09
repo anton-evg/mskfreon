@@ -1,5 +1,5 @@
 import React, { useEffect, useId, useState } from "react";
-import { Check } from "lucide-react";
+import { AlertCircle, Check } from "lucide-react";
 import { products } from "../data/siteData";
 
 const initialFormState = {
@@ -23,10 +23,30 @@ export function OrderForm({ initialRefrigerant = "", compact = false }) {
     setFormState((currentState) => ({ ...currentState, [field]: value }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    const formElement = event.currentTarget;
     setStatus("loading");
-    window.setTimeout(() => setStatus("success"), 700);
+
+    const requestData = new FormData(formElement);
+    requestData.set("page", window.location.href);
+
+    try {
+      const response = await fetch(formElement.action, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: requestData,
+      });
+      const result = await response.json().catch(() => null);
+
+      if (!response.ok || result?.success !== true) {
+        throw new Error(result?.message || "Не удалось отправить заявку.");
+      }
+
+      setStatus("success");
+    } catch (error) {
+      setStatus("error");
+    }
   };
 
   if (status === "success") {
@@ -43,13 +63,23 @@ export function OrderForm({ initialRefrigerant = "", compact = false }) {
   }
 
   return (
-    <form className={`order-form${compact ? " order-form--compact" : ""}`} onSubmit={handleSubmit}>
+    <form
+      className={`order-form${compact ? " order-form--compact" : ""}`}
+      action="/send-telegramm.php"
+      method="post"
+      onSubmit={handleSubmit}
+    >
+      <label className="field field--honeypot" aria-hidden="true">
+        <span>Сайт</span>
+        <input name="website" type="text" tabIndex="-1" autoComplete="off" />
+      </label>
       <div className="order-form__grid">
         <label className="field" htmlFor={`${formId}-name`}>
           <span className="field__label">Имя</span>
           <input
             className="field__control"
             id={`${formId}-name`}
+            name="name"
             type="text"
             autoComplete="name"
             placeholder="Как к вам обращаться"
@@ -64,6 +94,7 @@ export function OrderForm({ initialRefrigerant = "", compact = false }) {
           <input
             className="field__control"
             id={`${formId}-phone`}
+            name="phone"
             type="tel"
             autoComplete="tel"
             placeholder="+7 999 000-00-00"
@@ -78,6 +109,7 @@ export function OrderForm({ initialRefrigerant = "", compact = false }) {
           <select
             className="field__control"
             id={`${formId}-refrigerant`}
+            name="refrigerant"
             value={formState.refrigerant}
             onChange={(event) => updateField("refrigerant", event.target.value)}
             required
@@ -94,6 +126,7 @@ export function OrderForm({ initialRefrigerant = "", compact = false }) {
           <input
             className="field__control"
             id={`${formId}-quantity`}
+            name="quantity"
             type="number"
             min="1"
             inputMode="numeric"
@@ -109,6 +142,7 @@ export function OrderForm({ initialRefrigerant = "", compact = false }) {
           <textarea
             className="field__control field__control--textarea"
             id={`${formId}-comment`}
+            name="comment"
             placeholder="Производитель, способ получения или другие детали"
             value={formState.comment}
             onChange={(event) => updateField("comment", event.target.value)}
@@ -119,10 +153,17 @@ export function OrderForm({ initialRefrigerant = "", compact = false }) {
       <label className="order-form__consent">
         <input type="checkbox" required />
         <span>
-          Даю согласие на <a href="/personal-data">обработку персональных данных</a> и ознакомлен с
+          Даю согласие на <a href="/personal-data-consent">обработку персональных данных</a> и ознакомлен с
           {" "}<a href="/privacy-policy">Политикой конфиденциальности</a>.
         </span>
       </label>
+
+      {status === "error" && (
+        <div className="order-form__error" role="alert">
+          <AlertCircle aria-hidden="true" />
+          <span>Не удалось отправить заявку. Позвоните: <a href="tel:+79362198199">+7 936 219-81-99</a>.</span>
+        </div>
+      )}
 
       <button className="button button--primary order-form__submit" type="submit" disabled={status === "loading"}>
         {status === "loading" ? "Отправляем заявку…" : "Отправить заявку"}

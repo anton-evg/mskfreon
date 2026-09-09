@@ -2,3 +2,12 @@ node_modules/
 dist/
 .vite/
 *.local
+.env
+.env.*
+!.env.example
+.prerender/
+*.log
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

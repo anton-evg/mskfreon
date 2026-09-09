@@ -328,7 +328,7 @@ export function CookieNotice() {
       <div className="cookie-notice__content">
         <strong>Мы используем cookie для работы сайта и анализа посещаемости.</strong>
         <p>
-          Даю согласие на <a href="/personal-data">обработку персональных данных</a> и ознакомлен с
+          Даю согласие на <a href="/personal-data-consent">обработку персональных данных</a> и ознакомлен с
           {" "}<a href="/privacy-policy">Политикой конфиденциальности</a>.
         </p>
       </div>
