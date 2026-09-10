@@ -38,7 +38,7 @@ const catalogFaqItems = [
 
 export function CatalogPage({ onRequest }) {
   useEffect(() => {
-    document.title = "Каталог фреонов оптом — РусХимСоюз";
+    document.title = "Каталог фреонов с ценами оптом и в розницу — РусХимСоюз";
   }, []);
 
   return (
@@ -53,7 +53,7 @@ export function CatalogPage({ onRequest }) {
 
           <div className="inner-hero__layout">
             <div className="inner-hero__content">
-              <h1 className="inner-hero__title">Каталог фреонов оптом</h1>
+              <h1 className="inner-hero__title">Каталог фреонов с ценами оптом и в розницу</h1>
               <p className="inner-hero__offer">
                 Выберите марку, количество и <strong>получите расчет заказа</strong>
               </p>

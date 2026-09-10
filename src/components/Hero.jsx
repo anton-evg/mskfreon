@@ -6,13 +6,13 @@ export function Hero({ onRequest }) {
     <section className="hero">
       <div className="hero__grid container">
         <div className="hero__content">
-          <h1 className="hero__title">Купить фреон оптом с доставкой по России</h1>
+          <h1 className="hero__title">Купить фреон в Москве оптом и в розницу</h1>
           <p className="hero__offer-line">
             Счет за 5–10 минут, отгрузка <strong>через час после оплаты</strong>
           </p>
           <p className="hero__lead">
-            R404A, R507, R134a и другие марки. Покажем цену от 1, 5, 20 и 100 баллонов,
-            подтвердим наличие и подготовим расчет доставки.
+            R404A, R507, R134a и другие марки. Цены указаны от 1 баллона,
+            для оптовых позиций — от 10 и 50 баллонов.
           </p>
           <div className="hero__actions">
             <button className="button button--primary" type="button" onClick={onRequest}>

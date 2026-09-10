@@ -3,18 +3,19 @@ import * as Accordion from "@radix-ui/react-accordion";
 import { ArrowRight, ChevronDown, FileCheck2, ShieldCheck, Truck } from "lucide-react";
 import { products } from "../data/siteData";
 import { OrderForm } from "./OrderForm";
+import { ProductPriceSection } from "./ProductPriceSection";
 
 const product = products.find((item) => item.code === "R32");
 const faqItems = [
   ["В какой таре поставляется R32?", "Фреон R32 поставляется в баллонах по 9,5 кг. Актуальное наличие подтвердит менеджер."],
   ["Для каких систем применяется R32?", "Техническое назначение и совместимость R32 зависят от конструкции конкретного оборудования. Перед заправкой характеристики проверяет специалист."],
-  ["Как узнать цену R32?", "Цена зависит от марки, количества баллонов и варианта товара. Мы подготовим расчет для заказа от 1, 5, 20 и 100 баллонов."],
+  ["Как узнать цену R32?", "В таблице указана цена одного баллона R32 для оплаты наличными, переводом, с НДС 5% и НДС 22%."],
   ["Какие документы можно получить?", "По запросу предоставим ГТД и сертификат соответствия на выбранный фреон."],
   ["Как получить заказ?", "Возможна доставка по Москве и области, отправка транспортной компанией в регионы России или самовывоз после поступления оплаты."],
 ];
 
 export function Freon32Page({ onRequest }) {
-  useEffect(() => { document.title = "Купить фреон R32 оптом — РусХимСоюз"; }, []);
+  useEffect(() => { document.title = "Купить фреон R32 в Москве оптом и в розницу — РусХимСоюз"; }, []);
   const request = (title) => onRequest({ title, refrigerant: "R32" });
   return (
     <main className="product-page" id="top">
@@ -22,14 +23,14 @@ export function Freon32Page({ onRequest }) {
         <nav className="breadcrumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span aria-hidden="true">/</span><a href="/products">Каталог</a><span aria-hidden="true">/</span><span>Фреон R32</span></nav>
         <div className="product-hero__grid"><div className="product-hero__content">
           <p className="product-hero__code">R32 · ХЛАДАГЕНТ</p>
-          <h1 className="product-hero__title">Купить фреон R32 оптом</h1>
+          <h1 className="product-hero__title">Купить фреон R32 в Москве оптом и в розницу</h1>
           <p className="product-hero__offer">Фреон R32 для <strong>систем кондиционирования</strong></p>
           <p className="product-hero__description">Фреон R32 в баллонах 9,5 кг. Покажем цену от объема, подтвердим наличие и рассчитаем доставку.</p>
           <div className="product-hero__actions"><button className="button button--primary" type="button" onClick={() => request("Получить цену и оформить заказ")}>Получить цену и оформить заказ</button><button className="button button--outline" type="button" onClick={() => request("Запросить документы на фреон R32")}>Запросить документы</button></div>
         </div><div className="product-hero__visual"><div className="product-hero__image-wrap"><img src={product.image} alt="Фреон R32 в баллоне Sanmei" /></div><dl className="product-hero__details"><div><dt>Тара</dt><dd>Баллон 9,5 кг</dd></div><div><dt>Назначение</dt><dd>Системы кондиционирования</dd></div><div><dt>Вариант</dt><dd>Sanmei</dd></div></dl></div></div>
       </div></section>
 
-      <section className="product-tiers section section--dark"><div className="container"><div className="section-heading section-heading--light"><h2 className="section-heading__title">Цена R32 зависит от количества баллонов</h2><p className="section-heading__description">Подготовим расчет для заказа от 1, 5, 20 и 100 баллонов. Для крупных закупок предложим индивидуальные условия.</p></div><div className="product-tiers__grid">{["1", "5", "20", "100"].map((quantity, index) => <article className="product-tiers__item" key={quantity}><span>{String(index + 1).padStart(2, "0")}</span><strong>{quantity}</strong><p>баллон{quantity === "1" ? "" : "ов"}</p><em>Цена по запросу</em></article>)}</div></div></section>
+      <ProductPriceSection code="R32" />
 
       <section className="product-content section"><div className="container product-content__grid"><aside className="product-content__aside"><span>R32</span><p>Поставка и особенности хладагента</p></aside><div className="product-content__body"><article className="product-content__article"><h2>Поставка фреона R32</h2><p>Фреон R32 поставляется в баллонах по 9,5 кг. Мы подтверждаем наличие, актуальную цену и условия доставки перед оформлением заказа.</p><p>Марку, количество баллонов и вариант товара можно указать в заявке. Для регулярных закупок подготовим отдельный расчет.</p></article><article className="product-content__article"><h2>Подбор R32 для оборудования</h2><p>Технические характеристики, сферу применения и правила хранения R32 необходимо сверять с паспортом конкретного товара и требованиями оборудования.</p><div className="product-content__notice"><ShieldCheck aria-hidden="true" /><p>Заправку и работы с холодильным контуром должен выполнять специалист, прошедший профессиональную подготовку.</p></div></article></div></div></section>
 

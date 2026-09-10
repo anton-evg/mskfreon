@@ -1,7 +1,10 @@
 import React from "react";
 import { ArrowUpRight, Image as ImageIcon } from "lucide-react";
+import { formatPrice, getRetailCashPrice } from "../data/freonPrices";
 
 export function ProductCard({ product, onRequest }) {
+  const retailCashPrice = getRetailCashPrice(product.code);
+
   return (
     <article className="product-card">
       <div className={`product-card__media${product.image ? "" : " product-card__media--placeholder"}`}>
@@ -30,6 +33,12 @@ export function ProductCard({ product, onRequest }) {
           <span>Вариант</span>
           <strong>{product.variant}</strong>
         </p>
+        {retailCashPrice && (
+          <p className="product-card__price">
+            <span>Наличными, от 1 шт.</span>
+            <strong>от {formatPrice(retailCashPrice)}</strong>
+          </p>
+        )}
         <div className="product-card__actions">
           <button
             className="button button--dark product-card__action"

@@ -371,6 +371,106 @@
   font-size: 16px;
 }
 
+.product-prices__variants {
+  display: grid;
+  gap: 32px;
+}
+
+.product-prices__variant {
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.product-prices__variant-header {
+  display: flex;
+  min-height: 76px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 20px 24px;
+}
+
+.product-prices__variant-header h3 {
+  margin: 0;
+  font-family: "Unbounded", sans-serif;
+  font-size: clamp(18px, 2vw, 24px);
+  letter-spacing: -0.04em;
+  text-wrap: pretty;
+}
+
+.product-prices__variant-header span {
+  flex: 0 0 auto;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  padding: 7px 10px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.product-prices__table-wrap {
+  overflow-x: auto;
+  scrollbar-color: rgba(112, 210, 218, 0.55) rgba(255, 255, 255, 0.08);
+}
+
+.product-prices__table {
+  width: 100%;
+  min-width: 720px;
+  border-collapse: collapse;
+}
+
+.product-prices__table th,
+.product-prices__table td {
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 19px 22px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.product-prices__table tr > :first-child {
+  text-align: left;
+}
+
+.product-prices__table tr > :last-child {
+  border-right: 0;
+}
+
+.product-prices__table tbody tr:last-child > * {
+  border-bottom: 0;
+}
+
+.product-prices__table thead th {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.product-prices__table tbody th {
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 14px;
+}
+
+.product-prices__table td {
+  color: #70d2da;
+  font-family: "Unbounded", sans-serif;
+  font-size: clamp(15px, 1.6vw, 19px);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+}
+
+.product-prices__note {
+  margin: 20px 0 0;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
 .product-content__grid {
   display: grid;
   grid-template-columns: minmax(240px, 0.62fr) minmax(0, 1.38fr);
@@ -794,6 +894,25 @@
 
   .catalog-benefits__item h2 {
     margin-top: 70px;
+  }
+}
+
+@media (max-width: 560px) {
+  .product-prices__variants {
+    gap: 24px;
+  }
+
+  .product-prices__variant-header {
+    min-height: 68px;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+    padding: 18px;
+  }
+
+  .product-prices__table th,
+  .product-prices__table td {
+    padding: 16px 18px;
   }
 }
 

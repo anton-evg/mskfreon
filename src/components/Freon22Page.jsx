@@ -9,6 +9,7 @@ import {
 import { products } from "../data/siteData";
 import { OrderForm } from "./OrderForm";
 import { LegacyProductDescription } from "./LegacyProductDescription";
+import { ProductPriceSection } from "./ProductPriceSection";
 
 const product = products.find((item) => item.code === "R22");
 
@@ -37,7 +38,7 @@ const faqItems = [
 
 export function Freon22Page({ onRequest }) {
   useEffect(() => {
-    document.title = "Купить фреон R22 оптом — РусХимСоюз";
+    document.title = "Купить фреон R22 в Москве оптом и в розницу — РусХимСоюз";
   }, []);
 
   const request = (title) => onRequest({ title, refrigerant: "R22" });
@@ -57,7 +58,7 @@ export function Freon22Page({ onRequest }) {
           <div className="product-hero__grid">
             <div className="product-hero__content">
               <p className="product-hero__code">R22 · ХЛАДАГЕНТ</p>
-              <h1 className="product-hero__title">Купить фреон R22 оптом</h1>
+              <h1 className="product-hero__title">Купить фреон R22 в Москве оптом и в розницу</h1>
               <p className="product-hero__offer">
                 Для <strong>холодильных установок и систем кондиционирования</strong>
               </p>
@@ -106,29 +107,7 @@ export function Freon22Page({ onRequest }) {
         </div>
       </section>
 
-      <section className="product-tiers section section--dark">
-        <div className="container">
-          <div className="section-heading section-heading--light">
-            <h2 className="section-heading__title">
-              Цена R22 зависит от количества баллонов
-            </h2>
-            <p className="section-heading__description">
-              Подготовим расчет для заказа от 1, 5, 20 и 100 баллонов. Для крупных
-              закупок предложим индивидуальные условия.
-            </p>
-          </div>
-          <div className="product-tiers__grid">
-            {["1", "5", "20", "100"].map((quantity, index) => (
-              <article className="product-tiers__item" key={quantity}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <strong>{quantity}</strong>
-                <p>баллон{quantity === "1" ? "" : "ов"}</p>
-                <em>Цена по запросу</em>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ProductPriceSection code="R22" />
 
       <LegacyProductDescription code="R22" />
 

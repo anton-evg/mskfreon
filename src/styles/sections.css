@@ -112,6 +112,29 @@
   color: rgba(23, 34, 45, 0.54);
 }
 
+.product-card__price {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 0;
+  border-top: 1px solid var(--color-line);
+  padding-top: 16px;
+}
+
+.product-card__price span {
+  color: rgba(23, 34, 45, 0.54);
+  font-size: 12px;
+}
+
+.product-card__price strong {
+  color: var(--color-graphite);
+  font-family: "Unbounded", sans-serif;
+  font-size: 17px;
+  letter-spacing: -0.035em;
+  white-space: nowrap;
+}
+
 .product-card__actions {
   display: grid;
   gap: 15px;
@@ -185,7 +208,8 @@
   margin-top: 30px;
   color: #70d2da;
   font-family: "Unbounded", sans-serif;
-  font-size: clamp(54px, 6vw, 84px);
+  font-size: clamp(28px, 3.2vw, 46px);
+  letter-spacing: -0.06em;
   line-height: 1;
 }
 

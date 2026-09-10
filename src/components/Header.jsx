@@ -19,7 +19,7 @@ export function Header({ onCallback }) {
       <div className="site-header__main container">
         <a className="site-header__brand" href="/" aria-label="РусХимСоюз — главная">
           <span className="site-header__brand-name">РусХимСоюз</span>
-          <span className="site-header__brand-caption">Фреоны и хладагенты оптом</span>
+          <span className="site-header__brand-caption">Фреоны оптом и в розницу</span>
         </a>
 
         <button

@@ -79,20 +79,20 @@ export function AboutPage({ onRequest }) {
         <div className="container product-content__grid">
           <aside className="product-content__aside">
             <span>РХС</span>
-            <p>Оптовые поставки хладагентов</p>
+            <p>Продажа фреонов оптом и в розницу</p>
           </aside>
 
           <div className="product-content__body">
             <article className="product-content__article">
-              <h2>Оптовые поставки хладагентов</h2>
+              <h2>Фреоны оптом и в розницу</h2>
               <p>
                 ООО «РусХимСоюз» поставляет фреоны и хладагенты для климатической
                 техники. В ассортименте представлены R22, R134a, R404A, R410A, R507 и
                 другие хладагенты.
               </p>
               <p>
-                Опыт оптовых поставок, ассортимент, контроль качества и организация
-                отгрузки позволяют работать с регулярными и крупными заказами.
+                Можно заказать один баллон или оформить регулярную и крупную поставку.
+                Для оптовых заказов действуют отдельные ценовые ступени.
               </p>
               <a className="text-link" href="/products">
                 Перейти в каталог <ArrowRight aria-hidden="true" />
@@ -145,7 +145,7 @@ export function AboutPage({ onRequest }) {
       <section className="request-section section" id="request">
         <div className="container request-section__layout">
           <div className="request-section__intro">
-            <p className="request-section__caption">Оптовая поставка</p>
+            <p className="request-section__caption">Опт и розница</p>
             <h2 className="request-section__title">Получите условия поставки</h2>
             <p className="request-section__description">
               Укажите марку и количество фреона. Менеджер сообщит актуальную цену,

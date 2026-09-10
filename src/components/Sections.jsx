@@ -56,10 +56,10 @@ export function Catalog({ onRequest }) {
 
 export function PriceLogic({ onRequest }) {
   const priceTiers = [
-    { amount: "1", label: "От 1 шт.", note: "Для разовой покупки" },
-    { amount: "5", label: "От 5 шт.", note: "Оптовая цена" },
-    { amount: "20", label: "От 20 шт.", note: "Для регулярной закупки" },
-    { amount: "100", label: "От 100 шт.", note: "Индивидуальные условия" },
+    { amount: "6 100 ₽", label: "Наличными", note: "Минимальная цена в каталоге" },
+    { amount: "6 400 ₽", label: "Перевод", note: "Минимальная цена в каталоге" },
+    { amount: "6 780 ₽", label: "НДС 5%", note: "Минимальная цена в каталоге" },
+    { amount: "7 810 ₽", label: "НДС 22%", note: "Минимальная цена в каталоге" },
   ];
 
   return (
@@ -67,8 +67,8 @@ export function PriceLogic({ onRequest }) {
       <div className="container">
         <SectionHeading
           light
-          title="Чем больше объем заказа, тем выгоднее цена за баллон"
-          description="Показываем цену для заказа от 1, 5, 20 и 100 баллонов. Для крупных закупок подготовим индивидуальное предложение."
+          title="Цены для четырех способов оплаты"
+          description="Показываем стоимость одного баллона от 1 штуки. На страницах товаров указаны оптовые цены от 10 и 50 баллонов."
         />
 
         <div className="price-logic__scale">
@@ -78,13 +78,13 @@ export function PriceLogic({ onRequest }) {
               <strong className="price-logic__amount">{tier.amount}</strong>
               <h3 className="price-logic__label">{tier.label}</h3>
               <p className="price-logic__note">{tier.note}</p>
-              <span className="price-logic__value">Цена по запросу</span>
+              <span className="price-logic__value">Цена от 1 баллона</span>
             </article>
           ))}
         </div>
 
         <div className="price-logic__footer">
-          <p>Наличие и стоимость доставки подтверждаем перед оформлением заказа.</p>
+          <p>Цена зависит от марки, веса и варианта товара. Наличие и стоимость доставки подтверждаем перед оформлением.</p>
           <button className="button button--primary" type="button" onClick={onRequest}>
             Получить цену и оформить заказ
           </button>

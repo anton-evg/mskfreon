@@ -5,6 +5,8 @@ import refrigerant410 from "../../assets/410/410 Refrigerant.jpg";
 import refrigerant32 from "../../assets/32/32 Sanmei.jpg";
 import refrigerant22 from "../../assets/22/22.jpg";
 import refrigerant407 from "../../assets/407с/407c Sanmei.jpg";
+import refrigerant600 from "../../assets/600/R600a.png";
+import refrigerant290 from "../../assets/290/R290.png";
 
 export const navigationItems = [
   { label: "Каталог", href: "/products" },
@@ -76,7 +78,7 @@ export const products = [
     name: "Фреон R600",
     weight: "6,5 кг",
     variant: "Вариант уточнит менеджер",
-    image: null,
+    image: refrigerant600,
     route: "/products/freon-600",
   },
   {
@@ -84,7 +86,7 @@ export const products = [
     name: "Фреон R290",
     weight: "5 кг",
     variant: "Вариант уточнит менеджер",
-    image: null,
+    image: refrigerant290,
     route: "/products/freon-290",
   },
 ];
@@ -152,7 +154,7 @@ export const proofGallery = [
 export const faqItems = [
   {
     question: "Как узнать актуальную цену?",
-    answer: "Цена зависит от марки, количества баллонов и варианта товара. Выберите позицию в каталоге или отправьте заявку.",
+    answer: "Выберите позицию в каталоге. На странице товара указаны цены за один баллон для разных объемов и способов оплаты.",
   },
   {
     question: "Как проверить наличие?",
@@ -168,7 +170,7 @@ export const faqItems = [
   },
   {
     question: "Можно ли купить несколько баллонов?",
-    answer: "Да. В карточке товара показаны условия для заказа от 1, 5, 20 и 100 баллонов.",
+    answer: "Да. Для основных позиций указаны цены от 1, 10 и 50 баллонов. Для R290, R600 и R32 указана цена от 1 баллона.",
   },
   {
     question: "Как получить оплаченный товар?",

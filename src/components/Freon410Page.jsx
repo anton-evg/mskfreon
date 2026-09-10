@@ -4,6 +4,7 @@ import { ArrowRight, ChevronDown, FileCheck2, Truck } from "lucide-react";
 import { products } from "../data/siteData";
 import { OrderForm } from "./OrderForm";
 import { LegacyProductDescription } from "./LegacyProductDescription";
+import { ProductPriceSection } from "./ProductPriceSection";
 
 const product = products.find((item) => item.code === "R410A");
 const faqItems = [
@@ -15,7 +16,7 @@ const faqItems = [
 ];
 
 export function Freon410Page({ onRequest }) {
-  useEffect(() => { document.title = "Купить фреон R410A оптом — РусХимСоюз"; }, []);
+  useEffect(() => { document.title = "Купить фреон R410A в Москве оптом и в розницу — РусХимСоюз"; }, []);
   const request = (title) => onRequest({ title, refrigerant: "R410A" });
   return (
     <main className="product-page" id="top">
@@ -23,14 +24,14 @@ export function Freon410Page({ onRequest }) {
         <nav className="breadcrumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span aria-hidden="true">/</span><a href="/products">Каталог</a><span aria-hidden="true">/</span><span>Фреон R410A</span></nav>
         <div className="product-hero__grid"><div className="product-hero__content">
           <p className="product-hero__code">R410A · ХЛАДАГЕНТ</p>
-          <h1 className="product-hero__title">Купить фреон R410A оптом</h1>
+          <h1 className="product-hero__title">Купить фреон R410A в Москве оптом и в розницу</h1>
           <p className="product-hero__offer">Для новых систем <strong>кондиционирования воздуха</strong></p>
           <p className="product-hero__description">Фреон R410A в баллонах 11,3 кг. Покажем цену от объема, подтвердим наличие и рассчитаем доставку.</p>
           <div className="product-hero__actions"><button className="button button--primary" type="button" onClick={() => request("Получить цену и оформить заказ")}>Получить цену и оформить заказ</button><button className="button button--outline" type="button" onClick={() => request("Запросить документы на фреон R410A")}>Запросить документы</button></div>
         </div><div className="product-hero__visual"><div className="product-hero__image-wrap"><img src={product.image} alt="Фреон R410A в баллоне" /></div><dl className="product-hero__details"><div><dt>Тара</dt><dd>Баллон 11,3 кг</dd></div><div><dt>Назначение</dt><dd>Новые системы кондиционирования</dd></div><div><dt>Состав</dt><dd>R125 и R32</dd></div></dl></div></div>
       </div></section>
 
-      <section className="product-tiers section section--dark"><div className="container"><div className="section-heading section-heading--light"><h2 className="section-heading__title">Цена R410A зависит от количества баллонов</h2><p className="section-heading__description">Подготовим расчет для заказа от 1, 5, 20 и 100 баллонов. Для крупных закупок предложим индивидуальные условия.</p></div><div className="product-tiers__grid">{["1", "5", "20", "100"].map((quantity, index) => <article className="product-tiers__item" key={quantity}><span>{String(index + 1).padStart(2, "0")}</span><strong>{quantity}</strong><p>баллон{quantity === "1" ? "" : "ов"}</p><em>Цена по запросу</em></article>)}</div></div></section>
+      <ProductPriceSection code="R410A" />
 
       <LegacyProductDescription code="R410A" />
 

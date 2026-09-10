@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { products } from "../data/siteData";
 import { OrderForm } from "./OrderForm";
+import { ProductPriceSection } from "./ProductPriceSection";
 
 const product = products.find((item) => item.code === "R404A");
 
@@ -47,7 +48,7 @@ const faqItems = [
 
 export function Freon404Page({ onRequest }) {
   useEffect(() => {
-    document.title = "Купить фреон R404A оптом — РусХимСоюз";
+    document.title = "Купить фреон R404A в Москве оптом и в розницу — РусХимСоюз";
   }, []);
 
   return (
@@ -65,7 +66,7 @@ export function Freon404Page({ onRequest }) {
           <div className="product-hero__grid">
             <div className="product-hero__content">
               <p className="product-hero__code">R404A · ХЛАДАГЕНТ</p>
-              <h1 className="product-hero__title">Купить фреон R404A оптом</h1>
+              <h1 className="product-hero__title">Купить фреон R404A в Москве оптом и в розницу</h1>
               <p className="product-hero__offer">
                 Для холодильного оборудования <strong>низких и средних температур</strong>
               </p>
@@ -108,27 +109,7 @@ export function Freon404Page({ onRequest }) {
         </div>
       </section>
 
-      <section className="product-tiers section section--dark">
-        <div className="container">
-          <div className="section-heading section-heading--light">
-            <h2 className="section-heading__title">Цена R404A зависит от количества баллонов</h2>
-            <p className="section-heading__description">
-              Подготовим расчет для заказа от 1, 5, 20 и 100 баллонов. Для крупных закупок
-              предложим индивидуальные условия.
-            </p>
-          </div>
-          <div className="product-tiers__grid">
-            {["1", "5", "20", "100"].map((quantity, index) => (
-              <article className="product-tiers__item" key={quantity}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <strong>{quantity}</strong>
-                <p>баллон{quantity === "1" ? "" : "ов"}</p>
-                <em>Цена по запросу</em>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ProductPriceSection code="R404A" />
 
       <section className="product-content section">
         <div className="container product-content__grid">

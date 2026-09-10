@@ -15,7 +15,7 @@ export function Footer() {
       <div className="container site-footer__grid">
         <div className="site-footer__brand-column">
           <a className="site-footer__brand" href="/">РусХимСоюз</a>
-          <p>Фреоны и хладагенты оптом</p>
+          <p>Фреоны оптом и в розницу</p>
           <a className="site-footer__phone" href="tel:+79362198199">+7 936 219-81-99</a>
         </div>
 
