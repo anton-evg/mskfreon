@@ -87,10 +87,15 @@ export function ContactsPage({ onRequest }) {
                 107370, Россия, г. Москва, вн. тер. г. муниципальный округ Богородское,
                 ул. Бойцовая, д. 2/30, помещ. 2/1/П.
               </p>
-              <div className="contact-map-placeholder">
-                <MapPin aria-hidden="true" />
-                <strong>Карта появится после подтверждения точки организации или склада</strong>
-                <p>Юридический адрес не используется как неподтвержденная точка самовывоза.</p>
+              <div className="contact-map">
+                <iframe
+                  src="https://yandex.ru/map-widget/v1/?z=12&ol=biz&oid=90030499056"
+                  width="560"
+                  height="400"
+                  title="РусХимСоюз на Яндекс Картах"
+                  loading="lazy"
+                  allowFullScreen
+                />
               </div>
             </article>
           </div>
@@ -103,7 +108,7 @@ export function ContactsPage({ onRequest }) {
             <p className="request-section__caption">Связаться с менеджером</p>
             <h2 className="request-section__title">Получите ответ по заказу</h2>
             <p className="request-section__description">
-              Укажите марку фреона, количество и город. Менеджер рассчитает заказ и доставку.
+              Оставьте удобный контакт. Менеджер уточнит детали и рассчитает заказ с доставкой.
             </p>
           </div>
           <div className="request-section__form-wrap"><OrderForm /></div>

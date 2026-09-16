@@ -139,7 +139,7 @@ export function CatalogPage({ onRequest }) {
             <PackageCheck aria-hidden="true" />
             <span>03</span>
             <h2>Подбор партии под задачу</h2>
-            <p>Укажите марку и количество. Менеджер подготовит расчет и условия получения.</p>
+            <p>Оставьте удобный контакт. Менеджер уточнит детали и подготовит расчет.</p>
             <a className="text-link" href="#request">
               Перейти к заявке <ArrowRight aria-hidden="true" />
             </a>

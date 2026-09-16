@@ -149,7 +149,7 @@ export function DeliveryPage({ onRequest }) {
             <p className="request-section__caption">Расчет доставки</p>
             <h2 className="request-section__title">Рассчитайте доставку вместе с заказом</h2>
             <p className="request-section__description">
-              Укажите марку фреона, количество баллонов и город. Менеджер рассчитает
+              Оставьте удобный контакт. Менеджер уточнит детали и рассчитает
               стоимость товара и доставки.
             </p>
             <div className="request-section__contact">

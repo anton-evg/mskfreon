@@ -148,7 +148,7 @@ export function PaymentPage({ onRequest }) {
             <p className="request-section__caption">Заявка на оплату</p>
             <h2 className="request-section__title">Получите расчет и счет</h2>
             <p className="request-section__description">
-              Укажите марку, количество и способ получения. Менеджер подготовит расчет
+              Оставьте удобный контакт. Менеджер уточнит детали и подготовит расчет
               заказа и документы для оплаты.
             </p>
           </div>

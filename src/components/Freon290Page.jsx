@@ -215,7 +215,7 @@ export function Freon290Page({ onRequest }) {
             <p className="request-section__caption">Заявка на R290</p>
             <h2 className="request-section__title">Получите цену и расчет доставки</h2>
             <p className="request-section__description">
-              Укажите количество баллонов R290. Менеджер подтвердит наличие, цену и
+              Оставьте удобный контакт. Менеджер уточнит количество R290, подтвердит наличие, цену и
               условия получения.
             </p>
           </div>

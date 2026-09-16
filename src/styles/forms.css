@@ -104,6 +104,45 @@
   font-weight: 700;
 }
 
+.field__label small {
+  color: rgba(23, 34, 45, 0.52);
+  font-size: inherit;
+  font-weight: 400;
+}
+
+.contact-methods {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+
+.contact-methods__options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 30px;
+}
+
+.contact-methods__option {
+  display: inline-flex;
+  min-height: 32px;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.contact-methods__option input {
+  width: 22px;
+  height: 22px;
+  flex: 0 0 auto;
+  margin: 0;
+  accent-color: var(--color-turquoise);
+  cursor: pointer;
+}
+
 .field__control {
   width: 100%;
   min-height: 50px;

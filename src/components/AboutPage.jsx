@@ -148,7 +148,7 @@ export function AboutPage({ onRequest }) {
             <p className="request-section__caption">Опт и розница</p>
             <h2 className="request-section__title">Получите условия поставки</h2>
             <p className="request-section__description">
-              Укажите марку и количество фреона. Менеджер сообщит актуальную цену,
+              Оставьте удобный контакт. Менеджер уточнит марку и количество фреона, сообщит актуальную цену,
               рассчитает доставку и подготовит документы.
             </p>
           </div>

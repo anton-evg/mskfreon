@@ -178,7 +178,7 @@ export function Freon600Page({ onRequest }) {
             <p className="request-section__caption">Заявка на R600a</p>
             <h2 className="request-section__title">Получите цену и расчет доставки</h2>
             <p className="request-section__description">
-              Укажите количество баллонов R600a. Менеджер подтвердит наличие, цену и
+              Оставьте удобный контакт. Менеджер уточнит количество R600a, подтвердит наличие, цену и
               условия получения.
             </p>
           </div>

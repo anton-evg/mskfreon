@@ -178,7 +178,7 @@ export function Freon407Page({ onRequest }) {
             <p className="request-section__caption">Заявка на R407C</p>
             <h2 className="request-section__title">Получите цену и расчет доставки</h2>
             <p className="request-section__description">
-              Укажите количество баллонов R407C. Менеджер подтвердит наличие, цену и
+              Оставьте удобный контакт. Менеджер уточнит количество R407C, подтвердит наличие, цену и
               условия получения.
             </p>
           </div>

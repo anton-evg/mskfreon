@@ -178,7 +178,7 @@ export function Freon22Page({ onRequest }) {
             <p className="request-section__caption">Заявка на R22</p>
             <h2 className="request-section__title">Получите цену и расчет доставки</h2>
             <p className="request-section__description">
-              Укажите количество баллонов R22. Менеджер подтвердит наличие, цену и
+              Оставьте удобный контакт. Менеджер уточнит количество R22, подтвердит наличие, цену и
               условия получения.
             </p>
           </div>

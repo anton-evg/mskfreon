@@ -1,16 +1,49 @@
 import React, { useEffect, useId, useState } from "react";
 import { AlertCircle, Check } from "lucide-react";
-import { products } from "../data/siteData";
 
 const initialFormState = {
   refrigerant: "",
-  quantity: "",
   name: "",
-  phone: "",
+  contactMethod: "phone",
+  contact: "",
   comment: "",
 };
 
 const phonePattern = "\\+7 \\(\\d{3}\\) \\d{3}-\\d{2}-\\d{2}";
+const contactMethods = {
+  phone: {
+    label: "Телефон",
+    fieldLabel: "Телефон",
+    type: "tel",
+    inputMode: "tel",
+    autoComplete: "tel",
+    placeholder: "+7 (999) 000-00-00",
+    pattern: phonePattern,
+    title: "Введите телефон в формате +7 (999) 000-00-00",
+    maxLength: 18,
+    successText: "по указанному телефону",
+  },
+  telegram: {
+    label: "Telegram",
+    fieldLabel: "Никнейм в Telegram",
+    type: "text",
+    inputMode: "text",
+    autoComplete: "off",
+    placeholder: "@username",
+    maxLength: 100,
+    successText: "в Telegram",
+  },
+  max: {
+    label: "Max",
+    fieldLabel: "Никнейм в Max",
+    type: "text",
+    inputMode: "text",
+    autoComplete: "off",
+    placeholder: "Никнейм или ссылка",
+    maxLength: 100,
+    successText: "в Max",
+  },
+};
 const allowedPhoneControlKeys = new Set([
   "Backspace",
   "Delete",
@@ -77,6 +110,7 @@ export function OrderForm({ initialRefrigerant = "", compact = false }) {
   const formId = useId();
   const [formState, setFormState] = useState({ ...initialFormState, refrigerant: initialRefrigerant });
   const [status, setStatus] = useState("idle");
+  const activeContactMethod = contactMethods[formState.contactMethod];
 
   useEffect(() => {
     setFormState((currentState) => ({ ...currentState, refrigerant: initialRefrigerant }));
@@ -84,6 +118,14 @@ export function OrderForm({ initialRefrigerant = "", compact = false }) {
 
   const updateField = (field, value) => {
     setFormState((currentState) => ({ ...currentState, [field]: value }));
+  };
+
+  const selectContactMethod = (contactMethod) => {
+    setFormState((currentState) => ({
+      ...currentState,
+      contactMethod,
+      contact: "",
+    }));
   };
 
   const handleSubmit = async (event) => {
@@ -117,7 +159,7 @@ export function OrderForm({ initialRefrigerant = "", compact = false }) {
       <div className="order-form__message order-form__message--success" role="status">
         <Check aria-hidden="true" />
         <strong>Заявка отправлена.</strong>
-        <p>Менеджер свяжется с вами по указанному номеру.</p>
+        <p>Менеджер свяжется с вами {activeContactMethod.successText}.</p>
         <button className="button button--outline" type="button" onClick={() => setStatus("idle")}>
           Отправить еще одну заявку
         </button>
@@ -136,9 +178,28 @@ export function OrderForm({ initialRefrigerant = "", compact = false }) {
         <span>Сайт</span>
         <input name="website" type="text" tabIndex="-1" autoComplete="off" />
       </label>
+      <input name="refrigerant" type="hidden" value={formState.refrigerant} />
       <div className="order-form__grid">
+        <fieldset className="contact-methods field--wide">
+          <legend className="field__label">Как с вами связаться</legend>
+          <div className="contact-methods__options">
+            {Object.entries(contactMethods).map(([method, settings]) => (
+              <label className="contact-methods__option" key={method}>
+                <input
+                  type="radio"
+                  name="contact_method"
+                  value={method}
+                  checked={formState.contactMethod === method}
+                  onChange={() => selectContactMethod(method)}
+                />
+                <span>{settings.label}</span>
+              </label>
+            ))}
+          </div>
+        </fieldset>
+
         <label className="field" htmlFor={`${formId}-name`}>
-          <span className="field__label">Имя</span>
+          <span className="field__label">Имя <small>(необязательно)</small></span>
           <input
             className="field__control"
             id={`${formId}-name`}
@@ -148,65 +209,36 @@ export function OrderForm({ initialRefrigerant = "", compact = false }) {
             placeholder="Как к вам обращаться"
             value={formState.name}
             onChange={(event) => updateField("name", event.target.value)}
-            required
           />
         </label>
 
-        <label className="field" htmlFor={`${formId}-phone`}>
-          <span className="field__label">Телефон</span>
+        <label className="field" htmlFor={`${formId}-contact`}>
+          <span className="field__label">{activeContactMethod.fieldLabel}</span>
           <input
             className="field__control"
-            id={`${formId}-phone`}
-            name="phone"
-            type="tel"
-            autoComplete="tel"
-            inputMode="tel"
-            placeholder="+7 (999) 000-00-00"
-            pattern={phonePattern}
-            title="Введите телефон в формате +7 (999) 000-00-00"
-            maxLength={18}
-            value={formState.phone}
-            onKeyDown={handlePhoneKeyDown}
-            onChange={(event) => updateField("phone", formatRussianPhone(event.target.value))}
-            required
-          />
-        </label>
-
-        <label className="field" htmlFor={`${formId}-refrigerant`}>
-          <span className="field__label">Марка фреона</span>
-          <select
-            className="field__control"
-            id={`${formId}-refrigerant`}
-            name="refrigerant"
-            value={formState.refrigerant}
-            onChange={(event) => updateField("refrigerant", event.target.value)}
-            required
-          >
-            <option value="">Выберите марку</option>
-            {products.map((product) => (
-              <option value={product.code} key={product.code}>{product.name}</option>
-            ))}
-          </select>
-        </label>
-
-        <label className="field" htmlFor={`${formId}-quantity`}>
-          <span className="field__label">Количество баллонов</span>
-          <input
-            className="field__control"
-            id={`${formId}-quantity`}
-            name="quantity"
-            type="number"
-            min="1"
-            inputMode="numeric"
-            placeholder="Например, 20"
-            value={formState.quantity}
-            onChange={(event) => updateField("quantity", event.target.value)}
+            id={`${formId}-contact`}
+            name="contact"
+            type={activeContactMethod.type}
+            autoComplete={activeContactMethod.autoComplete}
+            inputMode={activeContactMethod.inputMode}
+            placeholder={activeContactMethod.placeholder}
+            pattern={activeContactMethod.pattern}
+            title={activeContactMethod.title}
+            maxLength={activeContactMethod.maxLength}
+            value={formState.contact}
+            onKeyDown={formState.contactMethod === "phone" ? handlePhoneKeyDown : undefined}
+            onChange={(event) => {
+              const value = formState.contactMethod === "phone"
+                ? formatRussianPhone(event.target.value)
+                : event.target.value;
+              updateField("contact", value);
+            }}
             required
           />
         </label>
 
         <label className="field field--wide" htmlFor={`${formId}-comment`}>
-          <span className="field__label">Комментарий к заказу</span>
+          <span className="field__label">Комментарий к заказу <small>(необязательно)</small></span>
           <textarea
             className="field__control field__control--textarea"
             id={`${formId}-comment`}

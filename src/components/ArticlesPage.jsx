@@ -51,7 +51,8 @@ export function ArticlesPage() {
               </div>
             </div>
             <div className="inner-hero__index" aria-hidden="true">
-              <span>3</span><strong>материала</strong><p>о фреонах, свойствах и применении хладагентов</p>
+              <span className="inner-hero__index-label">Материалы</span>
+              <p>о фреонах, свойствах и применении хладагентов</p>
             </div>
           </div>
         </div>
@@ -61,9 +62,6 @@ export function ArticlesPage() {
         <div className="container">
           <div className="section-heading">
             <h2 className="section-heading__title">Материалы о фреонах</h2>
-            <p className="section-heading__description">
-              Статьи отвечают на технические вопросы и ведут к релевантным товарам.
-            </p>
           </div>
           <div className="article-catalog__grid">
             {articles.map((article, index) => {

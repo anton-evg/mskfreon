@@ -100,7 +100,7 @@ export function OrderProcess() {
       <div className="container">
         <SectionHeading
           title="От запроса до отгрузки товара"
-          description="Укажите марку, количество баллонов и город. Менеджер рассчитает заказ и подскажет способ получения."
+          description="Оставьте удобный контакт. Менеджер уточнит детали, рассчитает заказ и подскажет способ получения."
         />
         <ol className="order-process__list">
           {orderSteps.map((step, index) => (
@@ -253,7 +253,7 @@ export function RequestSection() {
           <p className="request-section__caption">Заявка на расчет</p>
           <h2 className="request-section__title">Получите цену, наличие и расчет доставки</h2>
           <p className="request-section__description">
-            Укажите параметры заказа. Менеджер подготовит ответ по выбранному фреону.
+            Оставьте удобный контакт. Менеджер уточнит детали и подготовит расчет.
           </p>
           <div className="request-section__contact">
             <Phone aria-hidden="true" />

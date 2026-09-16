@@ -246,7 +246,7 @@ export function Freon404Page({ onRequest }) {
             <p className="request-section__caption">Заявка на R404A</p>
             <h2 className="request-section__title">Получите цену и расчет доставки</h2>
             <p className="request-section__description">
-              Укажите количество баллонов R404A. Менеджер подтвердит наличие, цену и условия
+              Оставьте удобный контакт. Менеджер уточнит количество R404A, подтвердит наличие, цену и условия
               получения.
             </p>
           </div>

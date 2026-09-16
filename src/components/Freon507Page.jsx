@@ -165,7 +165,7 @@ export function Freon507Page({ onRequest }) {
             <p className="request-section__caption">Заявка на R507</p>
             <h2 className="request-section__title">Получите цену и расчет доставки</h2>
             <p className="request-section__description">
-              Укажите количество баллонов R507. Менеджер подтвердит наличие, цену и условия
+              Оставьте удобный контакт. Менеджер уточнит количество R507, подтвердит наличие, цену и условия
               получения.
             </p>
           </div>
