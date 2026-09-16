@@ -1,0 +1,22 @@
+RewriteEngine On
+
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP:X-Forwarded-Proto} !https [NC]
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L,NE]
+
+RewriteRule ^kompaniya-ooo-mskfreon-krupneyshiy-postavshchik-freona-moskvy-i-rf-my-garantiruem-luchshie-ceny/?$ / [R=301,L,NE]
+RewriteRule ^o-kompanii/?$ /about [R=301,L,NE]
+RewriteRule ^dostavka-freona-po-moskve-i-v-regiony/?$ /delivery [R=301,L,NE]
+RewriteRule ^tovar/freon-134/?$ /products/freon-134 [R=301,L,NE]
+RewriteRule ^tovar/freon-404/?$ /products/freon-404 [R=301,L,NE]
+RewriteRule ^tovar/freon-407/?$ /products/freon-407 [R=301,L,NE]
+RewriteRule ^tovar/freon-410/?$ /products/freon-410 [R=301,L,NE]
+RewriteRule ^tovar/freon-22/?$ /products/freon-22 [R=301,L,NE]
+RewriteRule ^tovar/freon-r507/?$ /products/freon-507 [R=301,L,NE]
+RewriteRule ^tovar/freon-r600/?$ /products/freon-600 [R=301,L,NE]
+RewriteRule ^tovar/freon-r12/?$ /articles/freon-r12 [R=301,L,NE]
+RewriteRule ^doc/freon-404a-primenenie-freonov-hladonov-vidy-freonov/?$ /articles/freon-404a-primenenie [R=301,L,NE]
+RewriteRule ^doc/freony/?$ /articles/freony [R=301,L,NE]
+RewriteRule ^pochemu-freon-nuzhno-kupit-u-nas-kachestvo-garantii/?$ /about#quality-guarantee [R=301,L,NE]
+RewriteRule ^blog/?$ /articles [R=301,L,NE]
+RewriteRule ^personal-data/?$ /personal-data-consent [R=301,L,NE]
