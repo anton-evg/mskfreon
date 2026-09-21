@@ -56,8 +56,8 @@ export function ContactsPage({ onRequest }) {
           </article>
           <article className="contact-options__item">
             <MapPin aria-hidden="true" />
-            <span>Юридический адрес</span>
-            <strong>Москва, ул. Бойцовая, д. 2/30</strong>
+            <span>Адрес компании</span>
+            <strong>Москва, Коровинское шоссе, 35, стр. 1</strong>
             <p>Точка самовывоза согласовывается с менеджером после оплаты.</p>
           </article>
           <article className="contact-options__item">
@@ -82,14 +82,11 @@ export function ContactsPage({ onRequest }) {
               </dl>
             </article>
             <article className="product-content__article">
-              <h2>Юридический адрес</h2>
-              <p>
-                107370, Россия, г. Москва, вн. тер. г. муниципальный округ Богородское,
-                ул. Бойцовая, д. 2/30, помещ. 2/1/П.
-              </p>
+              <h2>Адрес компании</h2>
+              <p>Москва, Коровинское шоссе, 35, стр. 1</p>
               <div className="contact-map">
                 <iframe
-                  src="https://yandex.ru/map-widget/v1/?z=12&ol=biz&oid=90030499056"
+                  src="https://yandex.ru/map-widget/v1/?mode=search&text=Москва%2C%20Коровинское%20шоссе%2C%2035%2C%20стр.%201&z=16"
                   width="560"
                   height="400"
                   title="РусХимСоюз на Яндекс Картах"

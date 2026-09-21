@@ -32,11 +32,8 @@ export function Footer() {
         </div>
 
         <address className="site-footer__address">
-          <strong>Юридический адрес</strong>
-          <p>
-            107370, Россия, г. Москва, вн. тер. г. муниципальный округ Богородское,
-            ул. Бойцовая, д. 2/30, помещ. 2/1/П
-          </p>
+          <strong>Адрес компании</strong>
+          <p>Москва, Коровинское шоссе, 35, стр. 1</p>
         </address>
       </div>
 
