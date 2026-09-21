@@ -86,7 +86,7 @@ export function ContactsPage({ onRequest }) {
               <p>Москва, Коровинское шоссе, 35, стр. 1</p>
               <div className="contact-map">
                 <iframe
-                  src="https://yandex.ru/map-widget/v1/?mode=search&text=Москва%2C%20Коровинское%20шоссе%2C%2035%2C%20стр.%201&z=16"
+                  src="https://yandex.ru/map-widget/v1/?z=12&ol=biz&oid=39569264925"
                   width="560"
                   height="400"
                   title="РусХимСоюз на Яндекс Картах"
