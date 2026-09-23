@@ -35,12 +35,14 @@ const contactMethods = {
   },
   max: {
     label: "Max",
-    fieldLabel: "Никнейм в Max",
-    type: "text",
-    inputMode: "text",
-    autoComplete: "off",
-    placeholder: "Никнейм или ссылка",
-    maxLength: 100,
+    fieldLabel: "Телефон в Max",
+    type: "tel",
+    inputMode: "tel",
+    autoComplete: "tel",
+    placeholder: "+7 (999) 000-00-00",
+    pattern: phonePattern,
+    title: "Введите телефон в формате +7 (999) 000-00-00",
+    maxLength: 18,
     successText: "в Max",
   },
 };
@@ -226,9 +228,9 @@ export function OrderForm({ initialRefrigerant = "", compact = false }) {
             title={activeContactMethod.title}
             maxLength={activeContactMethod.maxLength}
             value={formState.contact}
-            onKeyDown={formState.contactMethod === "phone" ? handlePhoneKeyDown : undefined}
+            onKeyDown={formState.contactMethod === "phone" || formState.contactMethod === "max" ? handlePhoneKeyDown : undefined}
             onChange={(event) => {
-              const value = formState.contactMethod === "phone"
+              const value = formState.contactMethod === "phone" || formState.contactMethod === "max"
                 ? formatRussianPhone(event.target.value)
                 : event.target.value;
               updateField("contact", value);

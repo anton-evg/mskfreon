@@ -52,26 +52,46 @@ if ($token === '' || $chatId === '') {
 }
 
 $name = getFormField('name', 100);
-$phone = getFormField('phone', 50);
+$contactMethod = getFormField('contact_method', 20);
+$contact = getFormField('contact', 100);
 $refrigerant = getFormField('refrigerant', 50);
-$quantity = getFormField('quantity', 20);
 $comment = getFormField('comment', 1000);
 $page = getFormField('page', 500);
 
-if ($name === '' || $phone === '' || $refrigerant === '' || $quantity === '') {
-    sendJson(422, false, 'Заполните обязательные поля формы.');
+/** Поддержка формы из ранее закешированной версии сайта. */
+if ($contactMethod === '' && $contact === '') {
+    $legacyPhone = getFormField('phone', 50);
+
+    if ($legacyPhone !== '') {
+        $contactMethod = 'phone';
+        $contact = $legacyPhone;
+    }
 }
 
-if (preg_match('/^\\+7 \\(\\d{3}\\) \\d{3}-\\d{2}-\\d{2}$/', $phone) !== 1) {
+$contactMethodLabels = [
+    'phone' => 'Телефон',
+    'telegram' => 'Telegram',
+    'max' => 'Max',
+];
+
+if (!array_key_exists($contactMethod, $contactMethodLabels)) {
+    sendJson(422, false, 'Выберите способ связи.');
+}
+
+if ($contact === '') {
+    sendJson(422, false, 'Укажите контакт для связи.');
+}
+
+if ($contactMethod === 'phone' && preg_match('/^\\+7 \\(\\d{3}\\) \\d{3}-\\d{2}-\\d{2}$/', $contact) !== 1) {
     sendJson(422, false, 'Введите телефон в формате +7 (999) 000-00-00.');
 }
 
 $messageFields = [
     'Новая заявка с сайта' => '',
     'Имя' => $name,
-    'Телефон' => $phone,
+    'Способ связи' => $contactMethodLabels[$contactMethod],
+    $contactMethodLabels[$contactMethod] => $contact,
     'Марка фреона' => $refrigerant,
-    'Количество баллонов' => $quantity,
     'Комментарий' => $comment,
     'Страница' => $page,
 ];

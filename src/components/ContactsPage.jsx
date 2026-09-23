@@ -21,7 +21,7 @@ export function ContactsPage({ onRequest }) {
           <nav className="breadcrumbs" aria-label="Хлебные крошки">
             <a href="/">Главная</a><span aria-hidden="true">/</span><span>Контакты</span>
           </nav>
-          <div className="inner-hero__layout">
+          <div className="inner-hero__layout inner-hero__layout--contacts">
             <div className="inner-hero__content">
               <h1 className="inner-hero__title">Контакты РусХимСоюз</h1>
               <p className="inner-hero__offer">Уточните условия заказа <strong>у менеджера</strong></p>
@@ -37,10 +37,6 @@ export function ContactsPage({ onRequest }) {
                   Реквизиты <ArrowDown aria-hidden="true" />
                 </a>
               </div>
-            </div>
-            <div className="inner-hero__index" aria-hidden="true">
-              <span>01</span><strong>телефон</strong>
-              <p>для вопросов по цене, заказу, документам и доставке</p>
             </div>
           </div>
         </div>
@@ -70,32 +66,29 @@ export function ContactsPage({ onRequest }) {
       </section>
 
       <section className="product-content section" id="company-details">
-        <div className="container product-content__grid">
-          <aside className="product-content__aside"><span>ООО</span><p>Реквизиты компании</p></aside>
-          <div className="product-content__body">
-            <article className="product-content__article">
-              <h2>Реквизиты компании</h2>
-              <dl className="payment-requisites">
-                {companyDetails.map(([label, value]) => (
-                  <div className="payment-requisites__item" key={label}><dt>{label}</dt><dd>{value}</dd></div>
-                ))}
-              </dl>
-            </article>
-            <article className="product-content__article">
-              <h2>Адрес компании</h2>
-              <p>Москва, Коровинское шоссе, 35, стр. 1</p>
-              <div className="contact-map">
-                <iframe
-                  src="https://yandex.ru/map-widget/v1/?z=12&ol=biz&oid=39569264925"
-                  width="560"
-                  height="400"
-                  title="РусХимСоюз на Яндекс Картах"
-                  loading="lazy"
-                  allowFullScreen
-                />
-              </div>
-            </article>
-          </div>
+        <div className="container product-content__grid product-content__grid--contacts">
+          <article className="product-content__article">
+            <h2>Реквизиты компании</h2>
+            <dl className="payment-requisites">
+              {companyDetails.map(([label, value]) => (
+                <div className="payment-requisites__item" key={label}><dt>{label}</dt><dd>{value}</dd></div>
+              ))}
+            </dl>
+          </article>
+          <article className="product-content__article">
+            <h2>Адрес компании</h2>
+            <p>Москва, Коровинское шоссе, 35, стр. 1</p>
+            <div className="contact-map">
+              <iframe
+                src="https://yandex.ru/map-widget/v1/?z=12&ol=biz&oid=39569264925"
+                width="560"
+                height="400"
+                title="РусХимСоюз на Яндекс Картах"
+                loading="lazy"
+                allowFullScreen
+              />
+            </div>
+          </article>
         </div>
       </section>
 
